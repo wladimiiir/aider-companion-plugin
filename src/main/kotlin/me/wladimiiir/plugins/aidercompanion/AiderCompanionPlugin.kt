@@ -6,8 +6,8 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.StartupActivity
 import com.intellij.openapi.Disposable
 
-@Service(Service.Level.PROJECT)
-class AiderCompanionPlugin(private val project: Project) : Disposable {
+@Service(Service.Level.APP)
+class AiderCompanionPlugin : Disposable {
     private val LOG = Logger.getInstance(AiderCompanionPlugin::class.java)
     private var restApiServer: RestApiServer? = null
 
@@ -19,7 +19,7 @@ class AiderCompanionPlugin(private val project: Project) : Disposable {
         try {
             LOG.info("Attempting to start AiderCompanion server")
             if (restApiServer == null) {
-                restApiServer = RestApiServer(project)
+                restApiServer = RestApiServer()
                 restApiServer?.start()
                 LOG.info("AiderCompanion server started successfully")
             } else {
