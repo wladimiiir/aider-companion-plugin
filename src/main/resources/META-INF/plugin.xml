@@ -24,7 +24,7 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <projectService serviceImplementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionPlugin"/>
+        <applicationService serviceImplementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionPlugin"/>
         <postStartupActivity implementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionPluginStartupActivity"/>
     </extensions>
 </idea-plugin>
