@@ -1,5 +1,5 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
+<idea-plugin url="https://github.com/wladimiiir/aider-companion-plugin">
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>me.wladimiiir.plugins.aider-plugin</id>
 
@@ -14,17 +14,26 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
+    <p>
     This plugin is a companion for the Aider tool (https://aider.chat). It exposes a REST API server with an endpoint that lists currently open files in the IDE.
-
+    </p>
+    <br/>
+    <p>
     Note: This plugin has a pending PR on Aider's side. The initial implementation is available in a fork (https://github.com/wladimiiir/aider/tree/aider-companion) with an open PR (https://github.com/Aider-AI/aider/pull/2067).
+    </p>
 
+    <p>
     To use this plugin with Aider:
-    1. Clone the fork mentioned above.
-    2. Set up the development environment as described in the Aider contributing guide.
-    3. Run Aider with the '--enable-companion' flag or start it manually using the '/companion start' command.
-
+    <ol>
+    <li>Clone the fork mentioned above.</li>
+    <li>Set up the development environment as described in the Aider contributing guide.</li>
+    <li>Run Aider with the '--enable-companion' flag or start it manually using the '/companion start' command.</li>
+    </ol>
+    <br/>
     Aider will automatically fetch open files from the IDE and use them in the chat. Please note that this feature is not yet part of the official Aider release and may undergo changes.
+    </p>
   ]]></description>
+
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
