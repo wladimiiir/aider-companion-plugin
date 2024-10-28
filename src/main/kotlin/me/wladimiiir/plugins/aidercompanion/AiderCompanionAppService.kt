@@ -1,14 +1,12 @@
 package me.wladimiiir.plugins.aidercompanion
 
+import com.intellij.openapi.Disposable
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.Logger
-import com.intellij.openapi.project.Project
-import com.intellij.openapi.startup.StartupActivity
-import com.intellij.openapi.Disposable
 
 @Service(Service.Level.APP)
-class AiderCompanionPlugin : Disposable {
-    private val LOG = Logger.getInstance(AiderCompanionPlugin::class.java)
+class AiderCompanionAppService : Disposable {
+    private val LOG = Logger.getInstance(AiderCompanionAppService::class.java)
     private var restApiServer: RestApiServer? = null
 
     init {
@@ -43,21 +41,6 @@ class AiderCompanionPlugin : Disposable {
             LOG.info("AiderCompanion server stopped successfully")
         } catch (e: Exception) {
             LOG.error("Failed to stop AiderCompanion server", e)
-        }
-    }
-}
-
-class AiderCompanionPluginStartupActivity : StartupActivity {
-    private val LOG = Logger.getInstance(AiderCompanionPluginStartupActivity::class.java)
-
-    override fun runActivity(project: Project) {
-        try {
-            LOG.info("AiderCompanionPluginStartupActivity: Initializing AiderCompanion")
-            val plugin = project.getService(AiderCompanionPlugin::class.java)
-            plugin.startServer()
-            LOG.info("AiderCompanionPluginStartupActivity: AiderCompanion initialized successfully")
-        } catch (e: Exception) {
-            LOG.error("AiderCompanionPluginStartupActivity: Failed to initialize AiderCompanion", e)
         }
     }
 }
