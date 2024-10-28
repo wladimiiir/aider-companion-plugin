@@ -14,26 +14,22 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    <p>
-    This plugin is a companion for the Aider tool (https://aider.chat). It exposes a REST API server with an endpoint that lists currently open files in the IDE.
-    </p>
-    <br/>
-    <p>
-    Note: This plugin has a pending PR on Aider's side. The initial implementation is available in a fork (https://github.com/wladimiiir/aider/tree/aider-companion) with an open PR (https://github.com/Aider-AI/aider/pull/2067).
-    </p>
+    This plugin is a companion for the Aider tool (https://aider.chat). It exposes a REST API server with an endpoint that lists currently open files in the IDE.<br/><br/>
 
-    <p>
-    To use this plugin with Aider:
-    <ol>
-    <li>Clone the fork mentioned above.</li>
-    <li>Set up the development environment as described in the Aider contributing guide.</li>
-    <li>Run Aider with the '--enable-companion' flag or start it manually using the '/companion start' command.</li>
-    </ol>
-    <br/>
+    Note: This plugin has a pending PR on Aider's side. The initial implementation is available in a fork (https://github.com/wladimiiir/aider/tree/aider-companion) with an open PR (https://github.com/Aider-AI/aider/pull/2067).<br/><br/>
+
+    To use this plugin with Aider:<br/>
+    1. Clone the fork mentioned above.<br/>
+    2. Set up the development environment as described in the Aider contributing guide.<br/>
+    3. Run Aider with the '--enable-companion' flag or start it manually using the '/companion start' command.<br/><br/>
+
     Aider will automatically fetch open files from the IDE and use them in the chat. Please note that this feature is not yet part of the official Aider release and may undergo changes.
     </p>
   ]]></description>
 
+    <change-notes><![CDATA[
+    Fixed Error with running multiple projects (plugin tried to start multiple servers).
+  ]]></change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
@@ -42,7 +38,11 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionPlugin"/>
-        <postStartupActivity implementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionPluginStartupActivity"/>
+        <applicationService serviceImplementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionAppService"/>
     </extensions>
+
+    <applicationListeners>
+        <listener class="me.wladimiiir.plugins.aidercompanion.AiderCompanionAppListener"
+                  topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
 </idea-plugin>
