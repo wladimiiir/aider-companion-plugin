@@ -39,10 +39,6 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionAppService"/>
+        <postStartupActivity implementation="me.wladimiiir.plugins.aidercompanion.AiderCompanionPluginStartupActivity"/>
     </extensions>
-
-    <applicationListeners>
-        <listener class="me.wladimiiir.plugins.aidercompanion.AiderCompanionAppListener"
-                  topic="com.intellij.ide.AppLifecycleListener"/>
-    </applicationListeners>
 </idea-plugin>
