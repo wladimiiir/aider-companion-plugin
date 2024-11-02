@@ -28,7 +28,14 @@
   ]]></description>
 
     <change-notes><![CDATA[
-    Fixed Error with running multiple projects (plugin tried to start multiple servers).
+    <p>0.1.4</p>
+    <ul>
+      <li>Fixed issue of plugin not starting on consecutive IDE startups.</li>
+    </ul>
+    <p>0.1.3</p>
+    <ul>
+      <li>Fixed Error with running multiple projects (plugin tried to start multiple servers).</li>
+    </ul>
   ]]></change-notes>
 
     <!-- Product and plugin compatibility requirements.
